@@ -1,7 +1,7 @@
 import requests 
-#from .utils import *  #En este import se pone solo . antes de utils porque el archivo en el que estoy esta a la misma altura que la carpeta utils. 
+from config import APIKEY
+ 
 
-APIKEY = '046BC141-EE9A-429C-AB7A-14953FA91D43'
 moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
 
 
