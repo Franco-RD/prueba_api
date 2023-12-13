@@ -19,7 +19,7 @@ for dic in lista_general:
 
 moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
 
-while moneda_cripto != '' and moneda_cripto.isalpha(:  
+while moneda_cripto != '' and moneda_cripto.isalpha():  
 
     if moneda_cripto in lista_criptos:
         url = f'https://rest.coinapi.io/v1/exchangerate/{moneda_cripto}/EUR?apikey={APIKEY}'
