@@ -20,5 +20,5 @@ def test_exchange_error():
     
     with pytest.raises(ModelError) as exceptionInfo:
         cambio.updateExchange(APIKEY)
-    assert str(exceptionInfo.value) == f"Status: {r.status_code}, error: You requested specific single item that we don't have at this moment."
+    assert str(exceptionInfo.value) == f"Status: {cambio.status_code}, error: You requested specific single item that we don't have at this moment."
     assert cambio.status_code

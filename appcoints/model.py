@@ -7,6 +7,7 @@ class ModelError(Exception):
 class AllCointsApiIO():
     def __init__(self):
         self.url = ''
+        self.lista_general = []
         self.lista_criptos = []
         self.lista_no_criptos = []
 
@@ -17,9 +18,9 @@ class AllCointsApiIO():
         if r.status_code != 200:
             raise Exception("Error en consulta codigo: {}".format(r.status_code))
 
-        lista_general = r.json()
+        self.lista_general = r.json()
         
-        for dic in lista_general:
+        for dic in self.lista_general:
             if dic['type_is_crypto'] == 1:
                 self.lista_criptos.append(dic['asset_id'])
             else:
