@@ -1,25 +1,25 @@
 from config import APIKEY
 from model import *
-from views import Views
+from views import *
 
 allcoint = AllCointsApiIO()
 allcoint.getAllCoins(APIKEY)
 
-print("Total: ", (len(allcoint.lista_general)))
-print("Criptos: ", len(allcoint.lista_criptos))
-print("No criptos: ", len(allcoint.lista_no_criptos))
+viewTools = Views()
+
+viewTools.viewListCoins(allcoint=allcoint)  #El parametro se pasa con = porque se llama exactamente igual el objeto que el parametro declarado en el metodo de la clase
 
 ########################################################################################################
 
-moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
+moneda_cripto = viewTools.insertCoin()
 
 while moneda_cripto != '' and moneda_cripto.isalpha():
     if moneda_cripto in allcoint.lista_criptos:
         exchange = Exchange(moneda_cripto)
         try:
             exchange.updateExchange(APIKEY)
-            print("Rate: {:.2f}€".format(exchange.rate))
+            viewTools.viewRateExchange(exchange)
         except ModelError as error:
-            print(error)            
+            viewTools.getError(error=error)            
 
-    moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
+    moneda_cripto = viewTools.insertCoin()
